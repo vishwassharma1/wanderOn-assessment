@@ -19,7 +19,7 @@ async function getUserById(id) {
 }
 
 async function getUserByEmail(det) {
-  const user = await User.findOne(email);
+  const user = await User.findOne(det);
   return user;
 }
 

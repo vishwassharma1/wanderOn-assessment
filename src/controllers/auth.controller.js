@@ -3,9 +3,6 @@ const jwt = require('jsonwebtoken');
 const config = require('../config/config');
 
 
-const createNewUserObject = newUser => ({
-  email: newUser.email,
-});
 
 const loginUser = async (req, res) => {
     const { email, password } = req.body;
@@ -45,8 +42,7 @@ const loginUser = async (req, res) => {
 const registerUser = async (req, res) => {
     const { username, email, password } = req.body;
     try {
-        console.log(username, email, password)
-        let det = {username:username,email:email}
+        const det = {username:username,email:email}
         let user = await userService.getUserByEmail(det);
         if (user) {
             return res.status(400).json({ msg: 'User already exists' });
