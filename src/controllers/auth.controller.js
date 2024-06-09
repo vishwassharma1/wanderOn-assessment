@@ -42,7 +42,12 @@ const loginUser = async (req, res) => {
 const registerUser = async (req, res) => {
     const { username, email, password } = req.body;
     try {
-        const det = {username:username,email:email}
+        const det = {
+            $or: [
+              { username:username },
+              { email:email}
+            ]
+          };
         let user = await userService.getUserByEmail(det);
         if (user) {
             return res.status(400).json({ msg: 'User already exists' });
