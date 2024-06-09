@@ -18,8 +18,8 @@ async function getUserById(id) {
   return user;
 }
 
-async function getUserByEmail(email) {
-  const user = await User.findOne({email:email});
+async function getUserByEmail(det) {
+  const user = await User.findOne(email);
   return user;
 }
 
