@@ -39,6 +39,9 @@ app.use((req, res, next) => {
 // convert error to ApiError, if needed
 app.use(errorConverter);
 
+app.get('/', (req, res) => {
+  res.status(200).send('Server is running');
+});
 // handle error
 app.use(errorHandler);
 
