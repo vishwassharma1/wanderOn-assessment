@@ -8,9 +8,13 @@ const httpStatus = require('http-status');
 const routes = require('./routes');
 const ApiError = require('./utils/ApiError');
 const {errorConverter, errorHandler} = require('./middlewares/error');
+const xss = require('xss-clean');
+
 
 const app = express();
 
+
+app.use(xss());
 
 // set security HTTP headers
 app.use(helmet());
