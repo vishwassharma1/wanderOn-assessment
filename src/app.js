@@ -10,6 +10,10 @@ const ApiError = require('./utils/ApiError');
 const {errorConverter, errorHandler} = require('./middlewares/error');
 const xss = require('xss-clean');
 
+const corsOptions = {
+  origin: 'http://localhost:3000', // React app's origin
+  optionsSuccessStatus: 200, // For legacy browser support
+};
 
 const app = express();
 
@@ -29,7 +33,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(compression());
 
 // enable cors
-app.use(cors());
+app.use(cors(corsOptions));
 app.options('*', cors());
 
 // Reroute all API request starting with "/v1" route
