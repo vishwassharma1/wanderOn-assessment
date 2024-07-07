@@ -41,11 +41,10 @@ const loginUser = async (req, res) => {
 };
 
 const registerUser = async (req, res) => {
-    const { username, email, password } = req.body;
+    const { name, email, password } = req.body;
     try {
         const det = {
             $or: [
-              { username:username },
               { email:email}
             ]
           };
@@ -55,7 +54,7 @@ const registerUser = async (req, res) => {
         }
 
         user = await authService.createUser({
-            username,
+            name,
             email,
             password
         });

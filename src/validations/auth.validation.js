@@ -1,9 +1,8 @@
 const Joi = require('joi');
 
 const baseRegisterSchema = {
-  username: Joi.string()
-    .trim()
-    .required(),
+  name: Joi.string()
+    .trim(),
   email: Joi.string()
     .email()
     .trim()
